@@ -14,8 +14,11 @@ function run(config, listenOpts = {}) {
   app.use(app.locals.basePath, routes);
 
   const port = listenOpts.port || 4567;
+  // added host as parameter
+  const host = listenOpts.host || '0.0.0.0'
+  // add listeners
   if (!listenOpts.disableListen) {
-    app.listen(port, () => console.log(`Arena is running on port ${port}`));
+    app.listen(port, host, () => console.log(`Arena is running on port ${port} on host ${host}`));
   }
 
   return app;
